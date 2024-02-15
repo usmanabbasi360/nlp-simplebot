@@ -5,8 +5,23 @@ from tkinter import *
 
 
 # Generating response
+# Generating response
 def get_bot_response(user_input):
-   
+  pairs = [
+    ('my name is (.*)', ['Hello ! % 1']),
+    ('(hi|hello|hey|holla|hola)', ['Hey there !', 'Hi there !', 'Hey !']),
+    ('(.*) your name', ['My name is Geeky']),
+    ('(.*) do you do', ['We provide a platform for tech enthusiasts, a wide range of options !']),
+    ('(.*) created you', ['Geeksforgeeks created me using python and NLTK']),
+    ('(.*) your day', ['It was good, thanks for asking!', 'Ah, I had a long day at the office... how about you?'])
+  ]
+
+# it will pick rendom response form the above list
+  chat = Chat(pairs)  
+  while user_input[-1] in "!.?":
+    user_input = user_input[:-1]
+  bot_response = chat.respond(user_input)
+  print(bot_response)
   return bot_response
 
 
